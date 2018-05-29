@@ -1,4 +1,4 @@
-package com.sc;
+package com.sc.app;
 
 public class DutyTaskMain {
 
