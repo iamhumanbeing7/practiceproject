@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="OptaPlanner 770 Libraries Extended">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../optaplanner-distribution-7.7.0.Final/examples/binaries" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../optaplanner-distribution-7.7.0.Final/examples/binaries" recursive="false" />
+  </library>
+</component>
