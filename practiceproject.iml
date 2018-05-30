@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="optaplanner lib" level="project" />
     <orderEntry type="library" name="optaplanner lib examples" level="project" />
+    <orderEntry type="library" name="poi_317" level="project" />
   </component>
 </module>
