@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="optaplanner lib examples">
+    <CLASSES>
+      <root url="file://C:/Java/optaplanner770/binaries_examples" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://C:/Java/optaplanner770/binaries_examples" recursive="false" />
+  </library>
+</component>
