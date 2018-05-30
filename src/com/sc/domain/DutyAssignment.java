@@ -13,5 +13,19 @@ public class DutyAssignment extends AbstractPersistable {
     @PlanningVariable(valueRangeProviderRefs = {"staffRange"})
     private Staff staff;
 
+    public Duty getDuty() {
+        return duty;
+    }
 
+    public void setDuty(Duty duty) {
+        this.duty = duty;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
 }
