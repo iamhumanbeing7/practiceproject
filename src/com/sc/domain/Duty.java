@@ -11,5 +11,37 @@ public class Duty extends AbstractPersistable {
     private int pk;
     private String type;
     private Period period;
-    private int requiredStaffSize;
+    private int requiredNOofStaff;
+
+    public int getPk() {
+        return pk;
+    }
+
+    public void setPk(int pk) {
+        this.pk = pk;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Period getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public int getRequiredNOofStaff() {
+        return requiredNOofStaff;
+    }
+
+    public void setRequiredNOofStaff(int requiredNOofStaff) {
+        this.requiredNOofStaff = requiredNOofStaff;
+    }
 }

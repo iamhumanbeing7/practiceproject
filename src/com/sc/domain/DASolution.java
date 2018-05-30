@@ -14,8 +14,12 @@ import java.util.List;
 public class DASolution extends AbstractPersistable{
 
     private List<Duty> duties;
+
+    @ValueRangeProvider(id = "staffRange")
+    @ProblemFactCollectionProperty
     private List<Staff> staffs;
 
+    @PlanningEntityCollectionProperty
     private List<DutyAssignment> dutyAssignments;
 
     private HardSoftScore score;
@@ -29,8 +33,6 @@ public class DASolution extends AbstractPersistable{
         this.duties = duties;
     }
 
-    @ValueRangeProvider(id = "staffRange")
-    @ProblemFactCollectionProperty
     public List<Staff> getStaffs() {
         return staffs;
     }
@@ -48,7 +50,7 @@ public class DASolution extends AbstractPersistable{
     public void setScore(HardSoftScore score) {
         this.score = score;
     }
-    @PlanningEntityCollectionProperty
+
     public List<DutyAssignment> getDutyAssignments() {
         return dutyAssignments;
     }
