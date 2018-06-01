@@ -23,7 +23,7 @@ public class testmain {
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         try {
-            File excelFile = new File("D:\\IntellijIdea_space\\practiceproject\\src\\com\\sc\\persistence\\Staff_List.xlsx");
+            File excelFile = new File("D:\\Data\\CAAS_UC3\\Staff_List.xlsx");
             FileInputStream fis = new FileInputStream(excelFile);
             XSSFWorkbook xWorkBook = new XSSFWorkbook(fis);
             XSSFSheet xSheet = xWorkBook.getSheetAt(0);

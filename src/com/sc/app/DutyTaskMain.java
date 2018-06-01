@@ -14,10 +14,10 @@ public class DutyTaskMain {
                 "com/sc/solver/DutyAssignmentSolverConfig.xml");
         Solver<DASolution> solver = solverFactory.buildSolver();
 
-        int staffSize = 10, planningWeekSize = 26;
+        int iPlanningWeekSize = 26;
 
         // Load a problem with 400 computers and 1200 processes
-        DASolution unsolvedDASolution = new DutyStaffGenerator().createDASolution(staffSize, planningWeekSize);
+        DASolution unsolvedDASolution = new DutyStaffGenerator().createDASolution(iPlanningWeekSize);
 
         // Solve the problem
         DASolution solvedDASolution = solver.solve(unsolvedDASolution);

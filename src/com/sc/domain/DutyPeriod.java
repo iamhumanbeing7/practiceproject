@@ -4,7 +4,8 @@ import org.optaplanner.examples.common.domain.AbstractPersistable;
 
 import java.time.LocalDate;
 
-public class Period extends AbstractPersistable {
+public class DutyPeriod extends AbstractPersistable {
+    private int weeksequence;
     private LocalDate StartDate;
     private LocalDate EndDate;
 
@@ -22,5 +23,13 @@ public class Period extends AbstractPersistable {
 
     public void setEndDate(LocalDate endDate) {
         EndDate = endDate;
+    }
+
+    public int getWeeksequence() {
+        return weeksequence;
+    }
+
+    public void setWeeksequence(int weeksequence) {
+        this.weeksequence = weeksequence;
     }
 }
