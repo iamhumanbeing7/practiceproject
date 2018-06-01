@@ -10,7 +10,7 @@ public class Duty extends AbstractPersistable {
      */
     private int pk;
     private String type;
-    private Period period;
+    private DutyPeriod period;
     private int requiredNOofStaff;
 
     public int getPk() {
@@ -29,11 +29,11 @@ public class Duty extends AbstractPersistable {
         this.type = type;
     }
 
-    public Period getPeriod() {
+    public DutyPeriod getPeriod() {
         return period;
     }
 
-    public void setPeriod(Period period) {
+    public void setPeriod(DutyPeriod period) {
         this.period = period;
     }
 

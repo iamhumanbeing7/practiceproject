@@ -47,7 +47,7 @@ public class DutyStaffGenerator {
         ORTM - ORT Member X 2
          */
         String[] dutyTypes = {"DO", "ORTL", "ORTM", "ORTM"};
-
+        LocalDate modifiedStartDate = lastMonDate(planningStartDate);
         while(counter < iPlanningWeekSize){
             for(String dutyType : dutyTypes) {
                 duty = new Duty();
@@ -55,8 +55,11 @@ public class DutyStaffGenerator {
                 duty.setType(dutyType);
                 DutyPeriod dutyPeriod = new DutyPeriod();
                 dutyPeriod.setWeeksequence(counter);
+                dutyPeriod.setStartDate(modifiedStartDate);
+                dutyPeriod.setEndDate(modifiedStartDate.plusDays(6));
             }
             counter++;
+            modifiedStartDate = modifiedStartDate.plusDays(7);
         }
     }
 
@@ -123,14 +126,14 @@ public class DutyStaffGenerator {
 
     }
 
-    private LocalDate nextMonDate (LocalDate ldate){
+    private LocalDate lastMonDate (LocalDate ldate){
 
         DayOfWeek dow = ldate.getDayOfWeek();
         if(dow != DayOfWeek.MONDAY){
-//            ldate
+            ldate = ldate.minusDays(dow.ordinal() - DayOfWeek.MONDAY.ordinal());
         }
 
-        return null;
+        return ldate;
     }
 
 }
