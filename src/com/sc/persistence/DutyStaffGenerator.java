@@ -29,6 +29,7 @@ public class DutyStaffGenerator {
 
     public DASolution createDASolution(int planningWeekSize){
         DASolution dasolution = new DASolution();
+        dasolution.setId(0L);
 
         createDutyList(dasolution, LocalDate.now(),52);
         createStaffList(dasolution);
@@ -47,7 +48,7 @@ public class DutyStaffGenerator {
         ORTM - ORT Member X 2
          */
         String[] dutyTypes = {"DO", "ORTL", "ORTM", "ORTM"};
-        LocalDate modifiedStartDate = lastMonDate(planningStartDate);
+        LocalDate nextStartDate = lastMonDate(planningStartDate);
         while(counter < iPlanningWeekSize){
             for(String dutyType : dutyTypes) {
                 duty = new Duty();
@@ -55,12 +56,15 @@ public class DutyStaffGenerator {
                 duty.setType(dutyType);
                 DutyPeriod dutyPeriod = new DutyPeriod();
                 dutyPeriod.setWeeksequence(counter);
-                dutyPeriod.setStartDate(modifiedStartDate);
-                dutyPeriod.setEndDate(modifiedStartDate.plusDays(6));
+                dutyPeriod.setStartDate(nextStartDate);
+                dutyPeriod.setEndDate(nextStartDate.plusDays(6));
+                duty.setPeriod(dutyPeriod);
+                duties.add(duty);
             }
             counter++;
-            modifiedStartDate = modifiedStartDate.plusDays(7);
+            nextStartDate = nextStartDate.plusDays(7);
         }
+        dasolution.setDuties(duties);
     }
 
     private void createStaffList(DASolution dasolution){
@@ -106,6 +110,7 @@ public class DutyStaffGenerator {
                 staffs.add(staff);
                 counter++;
             }
+            dasolution.setStaffs(staffs);
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
         } catch (IOException exception) {

@@ -12,7 +12,7 @@ import java.util.List;
 
 @PlanningSolution
 public class DASolution extends AbstractPersistable{
-
+    private Long ID;
     private List<Duty> duties;
 
     @ValueRangeProvider(id = "staffRange")
