@@ -1,4 +1,4 @@
-package com.sc.domain;
+package com.java.domain;
 
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 
@@ -10,6 +10,7 @@ public class Duty extends AbstractPersistable {
      */
     private int pk;
     private String type;
+    private String pool;
     private DutyPeriod period;
     private int requiredNOofStaff;
 
@@ -43,5 +44,13 @@ public class Duty extends AbstractPersistable {
 
     public void setRequiredNOofStaff(int requiredNOofStaff) {
         this.requiredNOofStaff = requiredNOofStaff;
+    }
+
+    public String getPool() {
+        return pool;
+    }
+
+    public void setPool(String pool) {
+        this.pool = pool;
     }
 }

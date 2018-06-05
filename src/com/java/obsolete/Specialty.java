@@ -1,6 +1,6 @@
-package com.sc.obsolete;
+package com.java.obsolete;
 
-import com.sc.domain.Staff;
+import com.java.domain.Staff;
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 
 import java.util.List;

@@ -14,15 +14,24 @@
  * limitations under the License.
  */
 
-package org.optaplanner.examples.cloudbalancing.solver;
+package com.resouces.solver;
     dialect "java"
 
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
+//import
 
-import com.sc.*;
+import com.java.domain.*;
 
 global HardSoftScoreHolder scoreHolder;
 
 // ############################################################################
 // Hard constraints
 // ############################################################################
+rule "DO staff from pool B and ORTL & ORTM from pool A"
+    when
+        DutyAssignment($duty : duty, $staff : staff, duty.getPool() != staff.getPool());
+
+    then
+        scoreHolder.addHardConstraintMatch(kcontext,-1);
+
+end

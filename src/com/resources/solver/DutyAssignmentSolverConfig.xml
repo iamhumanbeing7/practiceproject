@@ -4,7 +4,7 @@
 
   <!-- Domain model configuration -->
   <scanAnnotatedClasses>
-    <packageInclude>com.sc.domain</packageInclude>
+    <packageInclude>com.java</packageInclude>
   </scanAnnotatedClasses>
 
   <!-- Score configuration -->
@@ -12,7 +12,7 @@
     <!--<easyScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingEasyScoreCalculator</easyScoreCalculatorClass>-->
     <!--<easyScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingMapBasedEasyScoreCalculator</easyScoreCalculatorClass>-->
     <!--<incrementalScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingIncrementalScoreCalculator</incrementalScoreCalculatorClass>-->
-    <scoreDrl>com\sc\solver\DutyAssignmentScoreRules.drl</scoreDrl>
+    <scoreDrl>com\resources\solver\DutyAssignmentScoreRules.drl</scoreDrl>
     <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
     <!--<assertionScoreDirectorFactory>-->
       <!--<easyScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingMapBasedEasyScoreCalculator</easyScoreCalculatorClass>-->

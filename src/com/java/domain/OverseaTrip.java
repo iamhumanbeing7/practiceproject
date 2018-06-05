@@ -1,4 +1,4 @@
-package com.sc.domain;
+package com.java.domain;
 
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 

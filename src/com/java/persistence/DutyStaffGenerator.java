@@ -1,14 +1,8 @@
-package com.sc.persistence;
+package com.java.persistence;
 
-import com.sc.domain.DASolution;
-import com.sc.domain.Duty;
-import com.sc.domain.DutyPeriod;
-import com.sc.domain.Staff;
+import com.java.domain.*;
 import org.apache.poi.ss.formula.eval.NotImplementedException;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.eventusermodel.XSSFReader;
-import org.apache.poi.xssf.model.SharedStringsTable;
-import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -33,7 +27,7 @@ public class DutyStaffGenerator {
 
         createDutyList(dasolution, LocalDate.now(),52);
         createStaffList(dasolution);
-
+        createDutyAssignmentList(dasolution);
         return dasolution;
     }
 
@@ -54,6 +48,9 @@ public class DutyStaffGenerator {
                 duty = new Duty();
                 duty.setPk(counter);
                 duty.setType(dutyType);
+                if("ORTL".equals(dutyType)) {
+                    duty.setPool("A");
+                } else duty.setPool("B");
                 DutyPeriod dutyPeriod = new DutyPeriod();
                 dutyPeriod.setWeeksequence(counter);
                 dutyPeriod.setStartDate(nextStartDate);
@@ -122,6 +119,19 @@ public class DutyStaffGenerator {
         } finally {
             System.out.println("completed finally!");
         }
+    }
+
+    private void createDutyAssignmentList(DASolution dasolution){
+
+        List<Duty> dutyList = dasolution.getDuties();
+        List<DutyAssignment> dutyAssginmentList = new ArrayList<>();
+        for(Duty duty : dutyList){
+            DutyAssignment dutyassignment = new DutyAssignment();
+            dutyassignment.setDuty(duty);
+            dutyAssginmentList.add(dutyassignment);
+        }
+        dasolution.setDutyAssignments(dutyAssginmentList);
+
     }
 
 //to convert Date instance to LocalDate instance

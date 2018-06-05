@@ -1,4 +1,4 @@
-package com.sc.obsolete;
+package com.java.obsolete;
 
 import org.optaplanner.examples.common.domain.AbstractPersistable;
 

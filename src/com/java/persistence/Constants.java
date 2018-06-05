@@ -1,4 +1,4 @@
-package com.sc.persistence;
+package com.java.persistence;
 
 public class Constants {
 

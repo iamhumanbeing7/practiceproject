@@ -1,4 +1,4 @@
-package com.sc.domain;
+package com.java.domain;
 
 import org.optaplanner.core.api.domain.solution.PlanningScore;
 import org.optaplanner.core.api.domain.solution.PlanningSolution;
