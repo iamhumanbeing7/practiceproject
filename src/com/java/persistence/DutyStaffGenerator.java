@@ -41,18 +41,18 @@ public class DutyStaffGenerator {
         ORTL - ORT Lead X 1
         ORTM - ORT Member X 2
          */
-        String[] dutyTypes = {"DO", "ORTL", "ORTM", "ORTM"};
+        String[] dutyTypes = {Constants.dutyType_ORT_Lead, Constants.dutyType_DO, Constants.dutyType_ORT_Member, Constants.dutyType_ORT_Member};
         LocalDate nextStartDate = lastMonDate(planningStartDate);
         while(counter < iPlanningWeekSize){
             for(String dutyType : dutyTypes) {
                 duty = new Duty();
                 duty.setPk(counter);
                 duty.setType(dutyType);
-                if("ORTL".equals(dutyType)) {
-                    duty.setPool("A");
-                } else duty.setPool("B");
+                if(Constants.dutyType_ORT_Lead.equals(dutyType)) {
+                    duty.setPool(Constants.poolB);
+                } else duty.setPool(Constants.poolA);
                 DutyPeriod dutyPeriod = new DutyPeriod();
-                dutyPeriod.setWeeksequence(counter);
+                dutyPeriod.setWeeksequence(counter+1);
                 dutyPeriod.setStartDate(nextStartDate);
                 dutyPeriod.setEndDate(nextStartDate.plusDays(6));
                 duty.setPeriod(dutyPeriod);
@@ -81,6 +81,7 @@ public class DutyStaffGenerator {
             Row row;
             Staff staff;
             int counter = 0;
+            Long runningID = 0L;
             while(rowIterator.hasNext()){
                 row = rowIterator.next();
                 if (counter == 0) {
@@ -99,13 +100,15 @@ public class DutyStaffGenerator {
                 7	Pool
                  */
                 staff = new Staff();
-                staff.setID(dataFormatter.formatCellValue(row.getCell(0)));
+                staff.setStaffID(dataFormatter.formatCellValue(row.getCell(0)));
                 staff.setName(dataFormatter.formatCellValue(row.getCell(2)) + " " + dataFormatter.formatCellValue(row.getCell(3)));
                 staff.setSpecialty(dataFormatter.formatCellValue(row.getCell(5)));
                 staff.setEmployedDate(dateToldate(row.getCell(6).getDateCellValue()));
                 staff.setPool(dataFormatter.formatCellValue(row.getCell(7)));
+                staff.setId(runningID);
                 staffs.add(staff);
                 counter++;
+                runningID ++;
             }
             dasolution.setStaffs(staffs);
         } catch (FileNotFoundException exception) {
@@ -123,12 +126,15 @@ public class DutyStaffGenerator {
 
     private void createDutyAssignmentList(DASolution dasolution){
 
+        Long runningID = 0L;
         List<Duty> dutyList = dasolution.getDuties();
         List<DutyAssignment> dutyAssginmentList = new ArrayList<>();
         for(Duty duty : dutyList){
             DutyAssignment dutyassignment = new DutyAssignment();
             dutyassignment.setDuty(duty);
+            dutyassignment.setId(runningID);
             dutyAssginmentList.add(dutyassignment);
+            runningID ++;
         }
         dasolution.setDutyAssignments(dutyAssginmentList);
 

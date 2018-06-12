@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Staff extends AbstractPersistable {
     private String name;
-    private String ID;
+    private String staffID;
     private String specialty;
     private String pool;
     private OverseaTrip overseatrip;
@@ -20,12 +20,12 @@ public class Staff extends AbstractPersistable {
         this.name = name;
     }
 
-    public String getID() {
-        return ID;
+    public String getStaffID() {
+        return staffID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setStaffID(String staffID) {
+        this.staffID = staffID;
     }
 
     public String getSpecialty() {

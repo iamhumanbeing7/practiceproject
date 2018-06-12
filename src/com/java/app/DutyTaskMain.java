@@ -35,7 +35,7 @@ public class DutyTaskMain {
         for (DutyAssignment dutyAssignment : solvedDASolution.getDutyAssignments()) {
             Staff staff = dutyAssignment.getStaff();
             Duty duty = dutyAssignment.getDuty();
-            displayString.append("  ").append("Staff ID " + staff.getID() + "" + staff.getPool() + "" + staff.getSpecialty() ).append(" -> ")
+            displayString.append("  ").append("Staff ID:" + staff.getStaffID() + " Pool:" + staff.getPool() + " Sepcialty:" + staff.getSpecialty() ).append(" -> ")
                     .append(duty == null ? null : ("Week-" + duty.getPeriod().getWeeksequence()+ " " + duty.getType() + " " + duty.getPool() + " " + duty.getPeriod().getStartDate() + " " + duty.getPeriod().getEndDate())).append("\n");
         }
         return displayString.toString();

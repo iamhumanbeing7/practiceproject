@@ -21,17 +21,53 @@ import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
 //import
 
 import com.java.domain.*;
+import com.java.app.MiscTools;
+import com.java.persistence.Constants;
 
 global HardSoftScoreHolder scoreHolder;
 
 // ############################################################################
 // Hard constraints
 // ############################################################################
-rule "DO staff from pool B and ORTL & ORTM from pool A"
+rule "#1 - HC - staff pool must match duty pool"
     when
-        DutyAssignment($duty : duty, $staff : staff, duty.getPool() != staff.getPool());
+        DutyAssignment(isAssgined(), $daDutyPool : duty.getPool(), $daStaffPool : staff.getPool(), $daStaffPool != $daDutyPool)
 
     then
-        scoreHolder.addHardConstraintMatch(kcontext,-1);
+        scoreHolder.addHardConstraintMatch(kcontext,-20);
+end
 
+rule "#2 - HC - DO staff from pool B and ORTL & ORTM from pool A"
+    when
+        DutyAssignment(isAssgined(), (duty.getType() == Constants.dutyType_ORT_Lead && staff.getPool() != Constants.poolB) || (duty.getType() != Constants.dutyType_ORT_Lead && staff.getPool() != Constants.poolA))
+
+    then
+        scoreHolder.addHardConstraintMatch(kcontext,-10);
+end
+
+rule "#3 - HC - At least 1 week interval between 2 assginments for a staff"
+    when
+        DutyAssignment(isAssgined(), $daDutyPeriodStartDate : duty.getPeriod().getStartDate(), $daStaff : staff)
+        DutyAssignment(isAssgined(), staff == $daStaff, MiscTools.differenceOfDates(duty.period.getStartDate(), $daDutyPeriodStartDate) < 14)
+
+    then
+        scoreHolder.addHardConstraintMatch(kcontext,-10);
+end
+
+rule "#4 - SC - New duplicate specialty in same period"
+    when
+        DutyAssignment(isAssgined(), $daDutyPeriod : duty.getPeriod(), $dsStaffSpecialty : staff.getSpecialty())
+        DutyAssignment(isAssgined(), duty.getPeriod() == $daDutyPeriod, staff.getSpecialty() == $dsStaffSpecialty)
+    then
+//        scoreHolder.addHardConstraintMatch(kcontext,-1);
+        scoreHolder.addSoftConstraintMatch(kcontext,-10);
+end
+
+rule "#5 - SC - to evenly distribute duties on public holidays"
+    when
+        DutyAssignment(isAssgined(), MiscTools.isContainPH(duty.getPeriod()), $daStaff : staff, $daDutyPeriod : duty.getPeriod())
+        DutyAssignment(isAssgined(), staff == $daStaff, MiscTools.isContainPH(duty.getPeriod()), duty.getPeriod() != $daDutyPeriod)
+
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext,-10);
 end
