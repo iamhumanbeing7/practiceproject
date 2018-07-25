@@ -102,7 +102,7 @@ public class DutyStaffGenerator {
                 staff = new Staff();
                 staff.setStaffID(dataFormatter.formatCellValue(row.getCell(0)));
                 staff.setName(dataFormatter.formatCellValue(row.getCell(2)) + " " + dataFormatter.formatCellValue(row.getCell(3)));
-                staff.setSpecialty(dataFormatter.formatCellValue(row.getCell(5)));
+                staff.setSpecialty(dataFormatter.formatCellValue(row.getCell(5)).toUpperCase().trim());
                 staff.setEmployedDate(dateToldate(row.getCell(6).getDateCellValue()));
                 staff.setPool(dataFormatter.formatCellValue(row.getCell(7)));
                 staff.setId(runningID);

@@ -21,13 +21,14 @@
 
   <!-- Optimization algorithms configuration -->
   <termination>
-    <secondsSpentLimit>5</secondsSpentLimit>
+    <secondsSpentLimit>3600</secondsSpentLimit>
+    <unimprovedSecondsSpentLimit>10</unimprovedSecondsSpentLimit>
   </termination>
-
   <!-- Power tweaked optimization algorithms configuration -->
-  <constructionHeuristic>
+  <!--<constructionHeuristic>
     <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
   </constructionHeuristic>
+  -->
   <!--<localSearch>-->
     <!--<unionMoveSelector>-->
       <!--<changeMoveSelector/>-->
