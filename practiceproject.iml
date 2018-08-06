@@ -6,8 +6,8 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="EclipseLink" />
         <datasource-mapping>
+          <factory-entry name="CAASAAPU" value="6bf1eb99-73bc-47ef-8d49-5db77bd4157b" />
           <factory-entry name="Entities" value="1a4abcd9-038a-4c2a-9a05-65bb5a102e5d" />
-          <factory-entry name="JPATestPU" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>
